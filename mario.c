@@ -20,9 +20,9 @@ int main(void)
             {   
 
 
-                for (int j=h-i; j>=0; j--) 
+                for (int j=h-i; j>0; j--) 
                     {
-                        printf(" ");
+                        printf(".");
 
                     }
 
