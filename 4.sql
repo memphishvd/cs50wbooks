@@ -1,0 +1,1 @@
+SELECT Count(movie_id) from ratings where rating = 10.00
