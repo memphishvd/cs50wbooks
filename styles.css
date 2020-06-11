@@ -1,0 +1,130 @@
+@media (min-width:500px) {
+  html {
+    background: url('/imgs/web.JPG') fixed;
+    background-size: 100%;
+    font-size: 20px;
+  }
+}
+@media (max-width:499px) {
+  html {
+    background: url('/imgs/web2.jpg') fixed;
+    background-size: 100%;
+    font-size: 20px;
+  }
+}
+
+body {
+  background-color: transparent;
+}
+
+
+a:hover {
+  border-top: 1px solid #06ff55;
+  border-radius: 40px;
+  color: #06ff55;
+ }
+ 
+a {
+  color: #06ff55;
+  
+  transition: 500ms;
+}
+H6{
+    font-size: 40PX;
+    text-align: center;
+    color: rgb(66, 128, 4);
+}
+p{
+    font-weight: bold; color: rgb(66, 128, 4);
+}
+
+
+.basicbox {
+    background: rgba(255, 255, 255, .5);
+    margin: auto;
+    width: 60%;
+    border-radius: 25px;
+    
+    
+}
+.basicboxtest {
+  background-color: lawngreen;
+  margin-bottom: 10%;
+  width: 60%;
+  border-radius: 25px;
+  
+  
+}
+.basicboxmain {
+    background: rgba(255, 255, 255, .9);
+    margin: auto;
+    margin: auto;
+    border-radius: 25px;
+    
+}
+
+#header>ul {
+    list-style: none;
+    padding-left: 10px;
+    padding-top:10px;
+    padding-bottom:10px;
+    margin-top: 15px;
+    text-align: center;
+    
+  }
+ 
+  #header ul li {
+    margin-left: 100px;
+    font-size: 20px;
+    list-style: none;
+    display: inline-block
+  }
+
+  #maincontent {
+    overflow: hidden;
+    text-align: center;
+    color: ivory;
+    padding-top: 200px;
+    padding-bottom: 200px;
+   
+}
+#contentlist {
+    overflow: hidden;
+    color: rgb(20, 148, 31);
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 30px;
+    padding-left: 30px;
+    
+}
+
+#contentlist {
+    list-style: inside;
+    text-align: center;
+}
+.basicboxmaingrid {
+    background: rgba(9, 143, 5, 0.7);
+    padding: 20px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
+    grid-template-columns: 200px 200px auto;
+    margin: auto;
+    width: 55%;
+    border-radius: 25px;
+    justify-content: center;
+    align-items:center;
+    
+    
+}
+
+.boxitem {
+    background-color: white;
+    font-size: 20px;
+    border-radius: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+
