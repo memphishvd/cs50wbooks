@@ -1,0 +1,26 @@
+$bgcolors1:#16e627;
+$bgcolors2:rgb(2, 88, 20);
+span {
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    vertical-align: middle;
+    font-weight: bold;
+
+}
+%message {
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 25px;
+}
+
+.maincontentbgalt1 {
+    @extend %message;
+    background-color: $bgcolors1;
+}
+
+.maincontentbgalt2 {
+    @extend %message;
+    background-color: $bgcolors2;
+}
