@@ -1,0 +1,59 @@
+
+{% extends "layout.html" %}
+{% block title %}
+Results For {{ criteriavalue }}
+{% endblock %}
+{% block bgimg %}
+
+      
+body {
+
+background-image: url(../static/imgs/searcheyescover.jpg);
+
+
+}
+{% endblock %}
+    
+
+
+
+{% block navigation %} 
+{{ super() }}
+{% endblock %}
+
+
+{% block body %}
+{% if session.Active %}
+<main role="main" class="container">
+  <div class="d-flex align-items-center justify-content-center  p-3 my-3 text-white-50 bg-warning rounded shadow-sm">
+    <img class="mr-3" src="../static/imgs/search.png" alt="" width="48" height="48">
+    <div class="lh-100">
+      <h6 class="mb-0 text-white lh-100 ">Once upon a time someone searched for <span class="badge badge-pill bg-info "> {{ criteriavalue }} </span> and found <span class="badge badge-pill bg-info "> {{ resultcount }} </span> results!</h6>
+      
+    </div>
+  </div>
+  {% for row in alert %} 
+  <div class="my-3 p-3 bg-white rounded shadow-sm" style="opacity: 0.9;">
+    <h6 class="border-bottom border-gray pb-2 mb-0">Book Results</h6>
+    
+    <div class="media text-muted pt-3">
+      <img class="bd-placeholder-img mr-2 rounded" width="32" height="32" src="../static/imgs/openbook.jpg" >
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">{{ row.title }}</strong>
+        ISBN: {{ row.isbn }} - Author: {{ row.author }}
+      </p>
+    </div>
+    <small class="d-block text-right mt-3">
+      <a class="btn btn-warning mb-2" href="{{  url_for('bookdetail', bookID=row.bookid , isbn=row.isbn )  }}">Details</a>
+    </small>
+  </div>
+  {% endfor %}
+
+  
+  {% else %}
+
+  <span class=" d-flex my-auto justify-content-center badge bg-danger" > As Shakespeare would say: Halt who is't goeth h're, thee shalt not passeth without  <a href="{{ url_for('index') }}"> logging in</a></span>
+  {% endif %}   
+  </main>
+  {% endblock %}
+  

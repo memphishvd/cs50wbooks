@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+{% block bgimg %}
+
+      
+      body {
+ 
+  background-image: url(../static/imgs/bookcover.jpg);
+  background-color: #F7F4F7;
+
+      }
+{% endblock %}
+    
+{% block navigation %}
+{% endblock %}
+
+{% block body%}
+    
+
+<main role="main" class="container">
+
+  <br><br><br><br><br><br><br><br>
+  
+   
+  <div class="row mb-3 ">
+    <div class="col-md-8 themed-grid-col  " >
+      <div class="pb-3 ">
+        
+      </div>
+
+    </div>
+    <div class="col-md-4 themed-grid-col " style="font-weight: bolder; text-align: center;">
+      {% if msgmarker=="success" %}
+      <p class=" badge-pill text-white bg-success" style="font-size: 100%">{{ alert }}</p>
+      {% elif msgmarker=="fail" %}
+      <p class=" badge-pill text-white bg-danger" style="font-size: 100%">{{ alert }}</p>
+      {% endif %}
+      <p style="font-size: 400%; ">Got Book?</p>
+      <div class="row  ">
+        <div id="accordion" class="col-md-6 themed-grid-col " style="text-align: right;"><button type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="btn btn-outline-warning btn-sm">Login</button></div>
+        <div class="col-md-6 themed-grid-col " style="text-align: left;"><button type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="btn btn-outline-warning btn-sm">Register</button></div>
+      </div>
+      
+    </div>
+    
+    
+  </div>
+
+  <div class="row mb-3 ">
+    <div class="col-md-8 themed-grid-col " >
+      <div class="pb-3 ">
+        
+      </div>
+
+    </div>
+    <div id="collapseOne"  aria-labelledby="headingOne" data-parent="#accordion" class="collapse col-md-4 themed-grid-col  " style="font-weight: bolder; font-size: 400%; text-align: center;">
+      <form action="{{ url_for('login') }}" method="post">
+        <div class="form-group">
+          <input type="email" class="form-control" id="formname" name="email" style="background-color:#FFD15D;" placeholder="Enter Email" required>
+        </div>
+
+        <div class="form-group">
+          
+          <input type="password" class="form-control" id="formpassword" name="password" style="background-color:#FFD15D;" placeholder="Enter Password" required>
+        </div>
+
+        <button type="submit" style="font-weight: bold; color:#000000;" class="btn btn-sm btn-warning">Open Sesame</button>
+      </form>
+       
+      </div>
+
+      
+    </div>
+    
+    
+  </div>
+
+  <div class="row mb-3 ">
+    <div class="col-md-8 themed-grid-col " >
+      <div class="pb-3 ">
+        
+      </div>
+
+    </div>
+    <div id="collapseTwo"  aria-labelledby="headingTwo" data-parent="#accordion" class="collapse col-md-4 themed-grid-col  " style="font-weight: bolder; font-size: 400%; text-align: center;">
+      <form action="{{ url_for('register') }}" method="post">
+        <div class="form-group">
+          <input type="text" class="form-control" id="formname" name="name" style="background-color:#FFD15D;" placeholder="Enter Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control" id="formemail" name="email" style="background-color:#FFD15D;" placeholder="Enter Email" required>
+        </div>
+        <div class="form-group">
+          
+          <input type="password" class="form-control" id="formpassword" name="password" style="background-color:#FFD15D;" placeholder="Enter Password" required>
+        </div>
+
+        <button type="submit" style="font-weight: bold; color:#000000;"class="btn btn-sm btn-warning">Beam Me Up Scotty!</button>
+      </form>
+
+
+      
+    </div>
+    
+    
+  </div>
+  
+ 
+</main>
+{% endblock %}

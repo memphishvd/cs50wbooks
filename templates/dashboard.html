@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block title %}
+{{ session.name }}'s Dashboard
+{% endblock %}
+
+{% block bgimg %}
+
+      
+body {
+
+background-image: url(../static/imgs/eyescover.jpg);
+
+
+}
+{% endblock %}
+    
+
+
+
+
+{% block navigation %}{{ super() }}
+{% endblock %}
+
+
+{% block body %}
+{% if session.Active %}
+{% if alert %}
+<p class=" container badge-pill text-white bg-danger align-text-bottom text-center" style="font-size: 100%">{{ alert }} {{ criteriavalue }}</p>
+{% endif %}
+<main role="main" class="container justify-content-center">
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+  <div  class="d-flex justify-content-center">  
+    <h6>Hello..is it me you`re looking for?</h6>
+  </div><br>
+  <div  class="d-flex justify-content-center">  
+     
+    <form class="form-inline" action="{{ url_for('search') }}" method="post" >
+    <label class="sr-only" for="inlineFormInputName2">Name</label>
+    <input type="text"  name="criteriainput" placeholder="Input Search Criteria" class="form-control mb-2 mr-sm-2" style="background-color:#FFD15D;" id="inlineFormInputName2" >
+  
+    <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+    <div class="input-group mb-2 mr-sm-2">
+      <div class="input-group-prepend">
+        <div class="input-group-text">@</div>
+      </div>
+      
+      <select name="criteria" class="form-control" id="inlineFormInputGroupUsername2" style="background-color:#FFD15D;">
+        <option value="isbn">Search By ISBN</option>
+        <option value="title">Search By Title</option>
+        <option value="author">Search By Author</option>
+    </select>
+      
+    </div>
+  
+
+  
+    <button type="submit" style="font-weight: bold; color:#000000;" class="btn btn-warning mb-2">Submit</button>
+  </form>
+</div>
+  
+
+
+ 
+
+
+
+{% else %}
+
+<span class=" d-flex my-auto justify-content-center badge bg-danger" > As Shakespeare would say: Halt who is't goeth h're, thee shalt not passeth without  <a href="{{ url_for('index') }}"> logging in</a></span>
+{% endif %}   
+</main>
+{% endblock %}

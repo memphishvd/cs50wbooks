@@ -1,0 +1,139 @@
+{% extends "layout.html" %}
+{% block title %}
+Details For {{ session.dbdatabooks[0][2] }}
+{% endblock %}
+{% block bgimg %}
+
+      
+body {
+
+background-image: url(../static/imgs/bookinfocover.jpg);
+
+
+}
+{% endblock %}
+    
+
+
+
+{% block navigation %} 
+{{ super() }}
+{% endblock %}
+
+
+{% block body %}
+{% if session.Active %}
+
+<main role="main" class="container">
+  <div class="d-flex align-items-center justify-content-center  p-3 my-3 text-white-50 bg-warning rounded shadow-sm ">
+    <img class="mr-3" src="../static/imgs/letter.png" alt="" width="48" height="48">
+    <div class="lh-100">
+      <h6 class="mb-0 text-white lh-100 ">There are <span class="badge badge-pill bg-info ">{{ session.reviewcount }}</span> reviews for this book.</h6>
+      {% if msgmarker=="success" %}
+      <h6 class="mb-0 text-white bg-success lh-100 ">{{ message }}</h6>
+      {% elif msgmarker=="fail" %}
+      <h6 class="mb-0 text-white bg-danger lh-100 ">{{ message }}</h6>
+      {% endif %} 
+    </div>
+  </div>
+
+
+  <div class="card-deck">
+
+   
+    <div class="card bg-transparent">
+      <img class="card-img-top" height="260px" src="../static/imgs/goodreads.png" alt="Card image cap">
+      <div class="card-body bg-light  mb-0 text-black lh-100" align="center" style="font-weight: bold;opacity: 0.9;">
+        <h5 class="bg-warning card-title bg-danger text-white border-bottom rounded">Good Reads Data</h5>
+        <p class="card-text ">
+          
+          <span class=" border rounded bg-warning" >Title: {{ session.dbdatabooks[0][2] }} </span> <br><br>
+          <span class=" border rounded bg-warning">Author:  {{ session.dbdatabooks[0][3] }}  </span><br><br>
+          <span class=" border rounded bg-warning">ISBN:  {{ session.dbdatabooks[0][1] }}  </span><br><br>
+          <span class=" border rounded bg-warning">Year:  {{ session.dbdatabooks[0][4] }}  </span><br><br>
+          <span class=" border rounded bg-warning">Total Reviews: {{ session.greadsratings }} </span> <br><br>
+          <span class=" border rounded bg-warning">Average Rating:  {{ session.greadsavgratings }} </span> <br>
+        
+        </p>
+      </div>
+<!--../static/imgs/cardheader.jpg-->
+    </div>
+    <div class="card">
+      <img class="card-img-top" height="260px" src="../static/imgs/cardheader.jpg" alt="Card image cap">
+      <div class="card-body bg bg-light mb-0 text-white lh-100" align="center" style="font-weight: bold;">
+        <h5 class="card-title bg-danger border-bottom rounded">Papa Don't Preach..ok maybe a little bit!</h5>
+        <div class="form-group">
+        <span>
+          <form action="{{ url_for('addreview')}}" method="post">
+             
+              <textarea  style="background-color:#FFD15D;" name="reviewcomments" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Say Something Nice (Or Not) About The Book?"></textarea>
+              
+              
+           
+              <input type="hidden" name="bookID" value="{{ bookID }}"> 
+              
+              <input type="hidden" name="dbdatabooks" value="{{ session.dbdatabooks }}">
+              <input type="hidden" name="dbdatareviews" value="{{ session.dbdatareviews }}">
+              <br>
+             
+              <select  style="background-color:#FFD15D;" name="rating">
+                  <option value="5">☆☆☆☆☆</option>
+                  <option value="4">☆☆☆☆</option>
+                  <option value="3">☆☆☆</option>
+                  <option value="2">☆☆</option>
+                  <option value="1">☆</option>
+              </select>
+              <button>Submit</button>
+          </form>
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  {% for row in session.dbdatareviews %}
+   
+  <div class="my-3 p-3 bg-white rounded shadow-sm" style="opacity: 0.9;">
+
+      <h6 class="border-bottom border-gray pb-2 mb-0">Review Date: {{ row.dateofreview.strftime('%d-%B-%Y') }} -//- Rating: - {{ row.rating }}/5
+        <span class="badge-pill bg-warning">
+          {% if row.rating==5 %}
+          ☆☆☆☆☆
+          {% elif row.rating==4 %}
+          ☆☆☆☆
+          {% elif row.rating==3 %}
+          ☆☆☆
+          {% elif row.rating==2 %}
+          ☆☆
+          {% elif row.rating==1 %}
+          ☆
+          {% endif %}
+        </span>  
+      
+      </h6>
+      
+      {% if reviewvalidationid == row.reviewid  %}
+      <div class="text-muted pt-3 bg-warning">
+      {% else %}
+      <div class="text-muted pt-3">
+      {% endif %}
+          
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray text-break">
+
+          <strong class="d-block text-gray-dark"> Comments: </strong> {{ row.review_comments }} 
+          </p>
+      </div>
+      <small class="d-block text-right mt-3">
+        <a class="btn btn-sm btn-warning mb-2" href="{{  url_for('myapi' , isbn=session.dbdatabooks[0][1]   )  }}">Api Details</a>
+      </small>
+  </div>
+  {% endfor %}
+
+  
+  {% else %}
+
+  <span class=" d-flex my-auto justify-content-center badge bg-danger" > As Shakespeare would say: Halt who is't goeth h're, thee shalt not passeth without  <a href="{{ url_for('index') }}"> logging in</a></span>
+  {% endif %}   
+  </main>
+  {% endblock %} 
