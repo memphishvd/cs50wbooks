@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
+    <title>{% block title %}Got Book? Made For CS50W Project 1{% endblock %}</title>
+
+
+
+    <!-- Link To Bootstrap core CSS and Custom CSS file -->
+<link href="../static/assets/dist/css/bootstrap.css" rel="stylesheet">
+<link href="../static/assets/dist/css/offcanvas.css" rel="stylesheet">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+{% block bgimg %}
+{% endblock %}
+    </style>
+  
+  </head>
+  <body >
+ {% block navigation %}
+ <div class="d-flex justify-content-center bg-warning shadow-sm rounded">
+  <nav class="nav nav-underline">
+    <a class="nav-link active" href="{{ url_for('dashboard') }}">Dashboard</a>
+    <a class="nav-link" href="{{ url_for('myreviews') }}">
+      My Reviews
+      <span class="badge badge-pill bg-danger align-text-bottom">{{ session.userreviews[0] }}</span>
+    </a>
+    <a class="nav-link" >Total Reviews
+      <span class="badge badge-pill bg-danger align-text-bottom">{{ session.totalreviews[0] }}</span></a>
+    <a class="nav-link" >Books In Database
+      <span class="badge badge-pill bg-danger align-text-bottom">{{ session.totalbooks[0] }}</span></a>
+      <a class="nav-link" >Authors In Database
+        <span class="badge badge-pill bg-danger align-text-bottom">{{ session.totalauthors[0] }}</span></a>
+
+
+      
+      <span class="nav-link">Howdy <span class="badge badge-pill bg-success align-text-bottom">
+       
+        {{ session.name }}</span> || Last Logged In: <span class="badge badge-pill bg-success align-text-bottom"> {% if session.lastloggedin %} {{ session.lastloggedin.strftime('%d-%B-%Y') }} {% else %} Loggin' in for the first time eh!{% endif %}</span></span>
+
+        
+      <a class="nav-link" href="{{ url_for('logout') }}"> <span class="badge badge-pill bg-secondary align-text-bottom">Log Out</span></a>
+  </nav>
+</div> 
+ {% endblock %}
+
+{% block body%}
+{% endblock %}
+
+<!--JS to faciliate bootstrap components functionality as explained here https://getbootstrap.com/docs/4.4/getting-started/introduction/-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="../static/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../static/assets/dist/js/bootstrap.bundle.js"></script>
+        <script src="../static/assets/dist/js/offcanvas.js"></script>
+    
+    </body>
+</html>
