@@ -1,0 +1,76 @@
+
+{% extends "layout.html" %}
+{% block title %}
+{{ session.name }}'s Reviews
+{% endblock %}
+{% block bgimg %}
+
+      
+body {
+
+background-image: url(../static/imgs/bookinfocover.jpg);
+
+
+}
+{% endblock %}
+    
+
+
+
+{% block navigation %} 
+{{ super() }}
+{% endblock %}
+
+
+{% block body %}
+{% if session.Active %}
+<main role="main" class="container ">
+  <div class="d-flex align-items-center justify-content-center  p-3 my-3 text-white-50 bg-warning rounded shadow-sm ">
+    <img class="mr-3" src="../static/imgs/letter.png" alt="" width="48" height="48">
+    <div class="lh-100">
+      <h6 class="mb-0 text-white lh-100 ">Ahh My dear <span class="badge badge-pill bg-success "> {{ session.name }}</span>  {{ alert }}</h6>
+      
+    </div>
+  </div>
+ 
+  {% for row in session.myreviews %}
+   
+  <div class="my-3 p-3 bg-white rounded shadow-sm " style="opacity: 0.9;">
+
+      <h6 class="border-bottom border-gray pb-2 mb-0"><img class="bd-placeholder-img mr-2 rounded" width="32" height="32" src="../static/imgs/quill.png" >Review Date: {{ row.dateofreview.strftime('%d-%B-%Y') }} -//- Rating: - {{ row.rating }}/5
+        <span class="badge-pill bg-warning">
+          {% if row.rating==5 %}
+          ☆☆☆☆☆
+          {% elif row.rating==4 %}
+          ☆☆☆☆
+          {% elif row.rating==3 %}
+          ☆☆☆
+          {% elif row.rating==2 %}
+          ☆☆
+          {% elif row.rating==1 %}
+          ☆
+          {% endif %}
+        </span>  
+      
+      </h6>
+      
+
+      <div class="text-muted pt-3">
+    
+          
+          <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray text-break">
+
+          <strong class="d-block text-gray-dark"> Comments: </strong> {{ row.review_comments }} 
+          </p>
+      </div>
+
+  </div>
+  {% endfor %}
+
+  
+  {% else %}
+
+  <span class=" d-flex my-auto justify-content-center badge bg-danger" > As Shakespeare would say: Halt who is't goeth h're, thee shalt not passeth without  <a href="{{ url_for('index') }}"> logging in</a></span>
+  {% endif %}   
+  </main>
+  {% endblock %}
