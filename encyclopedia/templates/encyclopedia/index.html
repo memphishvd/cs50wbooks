@@ -1,0 +1,16 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>All Pages</h1>
+<h2>{% if alert %} Entry Added Successfully {{ alert }} {% endif %}</h2>
+    <ul>
+        {% for entry in entries %}
+            <li><a href="{% url 'encyclopedia:entrypage' title=entry %}">{{ entry }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
