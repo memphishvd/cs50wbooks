@@ -1,0 +1,16 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+   ERROR FINDING: {{ title }}
+{% endblock %}
+
+{% block body %}
+    
+    {% if alert %} 
+    <div class="d-flex justify-content-center alert  container text-white badge-pill bg-danger align-text-bottom ">
+        ERROR: {{ alert }}{{ title }}
+    </div>
+    {% endif %}
+
+
+{% endblock %}
