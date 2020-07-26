@@ -1,0 +1,27 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+
+{% if alert %} 
+<div class="d-flex justify-content-center alert  container text-white badge-pill bg-danger align-text-bottom ">
+    ERROR: {{ alert }} &nbsp; <b><u>{{ title }}</u></b>
+</div>
+{% else %}
+<div class="d-flex justify-content-center  alert  container text-white badge-pill bg-secondary align-text-bottom ">
+    <b>Entry Title - {{ title }}</b>
+</div>
+
+
+
+    <div class="card-body bg alert-secondary mb-0 text-dark lh-100 rounded container">
+        <span class="badge badge-pill bg-secondary align-text-bottom text-white"> 
+            <a style="color:white" href="{% url 'encyclopedia:editentrypage' title=title %}">EDIT</a> 
+        </span>
+            {{ contents|safe }}
+    </div>
+    {% endif %}
+{% endblock %}
