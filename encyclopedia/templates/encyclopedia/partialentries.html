@@ -1,0 +1,36 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+   
+
+    {% if alert %} 
+    <div class="d-flex justify-content-center alert  container text-white badge-pill bg-danger align-text-bottom ">
+        ERROR: {{ alert }} &nbsp; <b><u>{{ title }}</u></b>
+    </div>
+    {% else %}
+    <div class="d-flex justify-content-center  alert  container text-white badge-pill bg-secondary align-text-bottom ">
+        All Entries With &nbsp;<b><u>  {{ title }} </b></u>&nbsp; Anywhere in the Title
+    </div>
+    {% endif %}
+
+
+
+
+    <div class="form-group container rounded">
+    
+        {% for entry in contents %}
+    <div class="card-body bg alert-secondary mb-0 text-dark lh-100 rounded">
+        <a href="{% url 'encyclopedia:entrypage' title=entry %}">{{ entry }}</a>
+    </div>
+    <br>
+{% endfor %}
+
+
+    
+</div>       
+
+{% endblock %}
