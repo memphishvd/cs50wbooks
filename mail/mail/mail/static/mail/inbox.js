@@ -82,7 +82,7 @@ function load_mailbox(mailbox) {
         readreciept = element.read;
           readreciept
           ? rowvar.classList.add("table-dark")
-          : rowvar.classList.add("");
+          : rowvar.classList.add("table-light");
           
            })
           
@@ -248,7 +248,8 @@ function reply_email(sender,subject,timestamp,body) {
   // Check if subject already starts with Re if yes then don't add it again and if not then add Re: before the subject.
   let subj1 = subject.charAt(0)
   let subj2 = subject.charAt(1)
-  subjoined = subj1 + subj2
+  let subj3 = subject.charAt(2)
+  subjoined = subj1 + subj2 + subj3
   if (subjoined == "Re:") {
   document.querySelector('#compose-subject').value = `${subject}`;
   }
