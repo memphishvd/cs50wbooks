@@ -1,5 +1,6 @@
 # Submission for EdX CS50-Web Project 3 - Mail
 https://cs50.harvard.edu/web/2020/projects/3/mail/
+https://www.youtube.com/watch?v=QwwQ-kKHE9E&feature=youtu.be
 
 # Specification
 Using JavaScript, HTML, and CSS, complete the implementation of your single-page-app email client. You must fulfill the following requirements:
